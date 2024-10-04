@@ -6,8 +6,6 @@ $errors = [];
 $toyData = [];
 $notify = [];
 
-$notify = [];
-
 function notify($msg, $type)
 {
 	// Define alert types and their corresponding Bootstrap classes
