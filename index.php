@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$notify[] = notify("Error: " . $stmt->error, "error");
 		}
 		$stmt->close();
-	}else{
+	} else {
 		$notify[] = notify("Error: Please correct one or more errors in the form.", "error");
 	}
 }
@@ -126,6 +126,7 @@ if (isset($_GET['id'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin Panel - Toy Store</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 </head>
@@ -219,7 +220,7 @@ if (isset($_GET['id'])) {
 						<div class="col-md-6 mb-3">
 							<label for="visibility" class="form-label">Visibility</label>
 							<select class="form-select" id="visibility" name="visibility">
-								<option  disabled>Select visility</option>
+								<option disabled>Select visility</option>
 								<option value="visible" <?= $editMode && $toyData['Visibility'] == 'visible' ? 'selected' : ''; ?>>Visible</option>
 								<option value="hidden" <?= $editMode && $toyData['Visibility'] == 'hidden' ? 'selected' : ''; ?>>Hidden</option>
 							</select>
@@ -263,8 +264,12 @@ if (isset($_GET['id'])) {
 										<td><?= $row['CreatedAt']; ?></td>
 										<td><?= $row['Visibility']; ?></td>
 										<td>
-											<a href="?id=<?= $row['ToyID']; ?>" class="btn btn-warning btn-sm">Edit</a>
-											<a href="?delete=<?= $row['ToyID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this toy?');">Delete</a>
+											<a href="?id=<?= $row['ToyID']; ?>" class="btn btn-warning btn-sm">
+												<i class="bi bi-pencil-square"></i> Edit
+											</a>
+											<a href="?delete=<?= $row['ToyID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this toy?');">
+												<i class="bi bi-trash"></i> Delete
+											</a>
 										</td>
 									</tr>
 								<?php endwhile; ?>
